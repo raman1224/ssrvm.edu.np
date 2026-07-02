@@ -4,21 +4,22 @@ import {  Mail, MessageCircle, Phone} from 'lucide-react';
 import { memo, useCallback } from 'react';
 
 const socialLinks = [
-    {icon: MessageCircle, href: 'https://wa.me/+9779842047547', bg:"#40c351", label: 'WhatsApp' },
-        {icon: MessageCircle, href: 'https://wa.me/+9779842047547', bg:"#40c351", label: 'WhatsApp' },
-    {icon: MessageCircle, href: 'https://wa.me/+9779842047547', bg:"#40c351", label: 'WhatsApp' },
-    {icon: MessageCircle, href: 'https://wa.me/+9779842047547', bg:"#40c351", label: 'WhatsApp' },
-    {icon: MessageCircle, href: 'https://wa.me/+9779842047547', bg:"#40c351", label: 'WhatsApp' },
-
-]
+  {
+    id: 'whatsapp',
+    icon: MessageCircle,
+    href: 'https://wa.me/+9779842047547',
+    bg: '#40c351',
+    label: 'WhatsApp',
+  },
+];
 
 export const TopBar = memo(() => {
 
     const handleSocialClick = useCallback((href: string) => {
-        window.open(href, '_blank', 'noopener, noreffer');
+        window.open(href, '_blank', 'noopener,noreferrer');
     }, [])
     return (
-        <div className='text-white py-1.5 md: py-2 bg-[#bb2124]'>
+        <div className='text-white py-1.5 md:py-2 bg-[#bb2124]'>
             <div className='flex container mx-auto px-4 flex-wrap items-center justify-between'>
 {/* contact  */}
                 <div className='flex flex-wrap items-center gap-3 md:gap-6 text-xs md:text-sm '>
@@ -39,20 +40,18 @@ export const TopBar = memo(() => {
 
                 {/* social icons  */}
                 <div className='flex items-center gap-1.5 md:gap-2'>
-{socialLinks.map(({icon: Icon, href, bg, label}) => (
-    <button
-    key={label}
-    onClick={() => handleSocialClick(href)}
-    className='p-2 rounded-full hover:scale-110'
-    style={{ backgroundColor: bg}}
-aria-label={label}
-
-
->
-        <Icon size={14} className='text-white' />
-
-    </button>
-))}                </div>
+                  {socialLinks.map(({ id, icon: Icon, href, bg, label }) => (
+                    <button
+                      key={id}
+                      onClick={() => handleSocialClick(href)}
+                      className='p-2 rounded-full hover:scale-110'
+                      style={{ backgroundColor: bg }}
+                      aria-label={label}
+                    >
+                      <Icon size={14} className='text-white' />
+                    </button>
+                  ))}
+                </div>
             </div>
         </div>
     )

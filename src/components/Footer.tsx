@@ -15,10 +15,10 @@ const quickLinks = [
 ];
 
 const socialLinks = [
-  { icon: FaFacebook, href: 'https://www.facebook.com/ssrvmbrt', color: '#45619d' },
-  { icon: FilePlayIcon, href: 'https://www.youtube.com/channel/UCrDldcUb_WcCC8HSkuFpL3g', color: '#fd1c22' },
-  { icon: FaInstagram, href: 'https://wa.me/+9779842047547', color: '#f00075' },
-  { icon: MessageCircle, href: 'https://wa.me/+9779842047547', color: '#40c351' },
+  { id: 'facebook', icon: FaFacebook, href: 'https://www.facebook.com/ssrvmbrt', color: '#45619d' },
+  { id: 'youtube', icon: FilePlayIcon, href: 'https://www.youtube.com/channel/UCrDldcUb_WcCC8HSkuFpL3g', color: '#fd1c22' },
+  { id: 'instagram', icon: FaInstagram, href: 'https://www.instagram.com/', color: '#f00075' },
+  { id: 'whatsapp', icon: MessageCircle, href: 'https://wa.me/+9779842047547', color: '#40c351' },
 ];
 
 export const Footer = memo(() => {
@@ -102,9 +102,9 @@ export const Footer = memo(() => {
 
         {/* Social Icons */}
         <div className="flex gap-3 mt-8 pt-8 border-t border-white/10">
-          {socialLinks.map(({ icon: Icon, href, color }) => (
+          {socialLinks.map(({ id, icon: Icon, href, color }) => (
             <a
-              key={href}
+              key={id}
               href={href}
               target="_blank"
               rel="noopener noreferrer"
