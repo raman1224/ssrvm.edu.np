@@ -2,6 +2,7 @@
 
 import { memo, useState, useEffect, useCallback } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import OptimizedImage from '@/components/ui/OptimizedImage';
 
 const slides = [
   { id: 1, image: '/images/slider/1.webp', alt: 'School Building' },
@@ -10,8 +11,9 @@ const slides = [
   { id: 4, image: '/images/slider/4.webp', alt: 'School Activities' },
 ];
 
-export const HeroSlider = memo(() => {
+export const HeroSlider = memo(function HeroSlider() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
   const goToNext = useCallback(() => {
     setCurrentIndex((prev) => (prev + 1) % slides.length);
@@ -21,55 +23,63 @@ export const HeroSlider = memo(() => {
     setCurrentIndex((prev) => (prev - 1 + slides.length) % slides.length);
   }, []);
 
-  // Auto-play
+  const goToSlide = useCallback((index: number) => {
+    setCurrentIndex(index);
+  }, []);
+
   useEffect(() => {
+    if (!isAutoPlaying) return;
     const interval = setInterval(goToNext, 5000);
     return () => clearInterval(interval);
-  }, [goToNext]);
+  }, [isAutoPlaying, goToNext]);
+
+  const handleMouseEnter = useCallback(() => setIsAutoPlaying(false), []);
+  const handleMouseLeave = useCallback(() => setIsAutoPlaying(true), []);
 
   return (
-    <div className="relative w-full h-[300px] md:h-[400px] lg:h-[500px] overflow-hidden">
-      {/* Slides */}
+    <div 
+      className="relative w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       <div 
         className="flex transition-transform duration-700 ease-in-out h-full"
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
       >
         {slides.map((slide) => (
-          <div key={slide.id} className="min-w-full h-full flex-shrink-0">
-            <img
+          <div key={slide.id} className="min-w-full h-full flex-shrink-0 relative">
+            <OptimizedImage
               src={slide.image}
               alt={slide.alt}
-              className="w-full h-full object-cover"
-              loading="lazy"
-              width="1920"
-              height="600"
+              fill
+              priority={slide.id === 1}
+              className="w-full h-full"
+              objectFit="cover"
             />
           </div>
         ))}
       </div>
 
-      {/* Navigation Arrows */}
       <button
         onClick={goToPrevious}
-        className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/75 text-white p-2 rounded-full transition-colors"
+        className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/75 text-white p-2 rounded-full transition-colors z-10"
         aria-label="Previous slide"
       >
-        <ChevronLeft size={24} />
+        <ChevronLeft size={20} className="md:size-24" />
       </button>
       <button
         onClick={goToNext}
-        className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/75 text-white p-2 rounded-full transition-colors"
+        className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/75 text-white p-2 rounded-full transition-colors z-10"
         aria-label="Next slide"
       >
-        <ChevronRight size={24} />
+        <ChevronRight size={20} className="md:size-24" />
       </button>
 
-      {/* Dots */}
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
         {slides.map((_, index) => (
           <button
             key={index}
-            onClick={() => setCurrentIndex(index)}
+            onClick={() => goToSlide(index)}
             className={`w-2 h-2 rounded-full transition-all ${
               index === currentIndex 
                 ? 'bg-white w-6' 
@@ -82,5 +92,3 @@ export const HeroSlider = memo(() => {
     </div>
   );
 });
-
-HeroSlider.displayName = 'HeroSlider';
