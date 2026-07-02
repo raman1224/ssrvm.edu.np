@@ -1,3 +1,5 @@
+'use client';
+
 import {  Mail, MessageCircle, Phone} from 'lucide-react';
 import { memo, useCallback } from 'react';
 

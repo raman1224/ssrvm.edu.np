@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Phone, Mail, MapPin, MessageCircle, FilePlayIcon } from 'lucide-react';
 import { FaFacebook, FaInstagram } from 'react-icons/fa'; 
 
@@ -52,7 +52,7 @@ export const Footer = memo(() => {
               {quickLinks.map((link) => (
                 <li key={link.path}>
                   <Link 
-                    to={link.path}
+                    href={link.path}
                     className="text-[#2d9cc1] hover:text-[#ffc844] transition-colors text-sm"
                   >
                     {link.label}
@@ -121,7 +121,7 @@ export const Footer = memo(() => {
         <div className="mt-8 pt-6 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-2 text-sm">
           <p className="text-gray-400">
             All Rights Reserved for{' '}
-            <Link to="/" className="text-[#2d9cc1] hover:text-[#ffc844] transition-colors">
+            <Link href="/" className="text-[#2d9cc1] hover:text-[#ffc844] transition-colors">
               Sri Sri Ravishankar Vidya Mandir
             </Link>
           </p>

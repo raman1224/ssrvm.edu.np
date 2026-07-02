@@ -1,5 +1,8 @@
+'use client';
+
 import React, { memo, useState, useCallback, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import useMediaQuery from '../hooks/useMediaQuery';
 
@@ -71,14 +74,14 @@ const navItems: NavItem[] = [
 export const Navigation = memo(() => {
   const [isOpen, setIsOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
-  const location = useLocation();
+  const pathname = usePathname();
   const isMobile = useMediaQuery('(max-width: 768px)');
 
   // Close mobile menu on route change
   useEffect(() => {
     setIsOpen(false);
     setOpenDropdown(null);
-  }, [location.pathname]);
+  }, [pathname]);
 
   const toggleMenu = useCallback(() => {
     setIsOpen(prev => !prev);
@@ -89,8 +92,8 @@ export const Navigation = memo(() => {
   }, []);
 
   const isActivePath = useCallback((path: string) => {
-    return location.pathname === path;
-  }, [location.pathname]);
+    return pathname === path;
+  }, [pathname]);
 
   const renderNavItems = useCallback((items: NavItem[]) => {
     return items.map((item) => {
@@ -118,7 +121,7 @@ export const Navigation = memo(() => {
               {item.subItems?.map((sub) => (
                 <li key={sub.path}>
                   <Link
-                    to={sub.path}
+                    href={sub.path}
                     className="block px-4 py-2.5 text-sm text-gray-600 hover:bg-gray-50 hover:text-[#0095e8] transition-colors border-b border-gray-100 last:border-0"
                   >
                     {sub.label}
@@ -133,7 +136,7 @@ export const Navigation = memo(() => {
       return (
         <li key={item.path}>
           <Link
-            to={item.path || '/'}
+            href={item.path || '/'}
             className={`block px-3 py-2 text-sm font-medium transition-colors ${
               isActivePath(item.path || '/')
                 ? 'text-[#0095e8]'
