@@ -113,7 +113,7 @@ export const Navigation = memo(() => {
               />
             </button>
             <ul className={`
-              ${isMobile ? 'relative' : 'absolute left-0 top-full'}
+              ${isMobile ? 'relative' : 'absolute left-0 top-full mt-2'}
               ${isMobile ? 'block' : 'hidden group-hover:block'}
               bg-white shadow-lg rounded-lg min-w-[220px] z-50
               ${openDropdown === item.label || !isMobile ? 'block' : 'hidden'}
@@ -164,7 +164,7 @@ export const Navigation = memo(() => {
           </button>
 
           {/* Desktop Navigation */}
-          <ul className="hidden md:flex items-center gap-1 py-2 overflow-x-auto">
+          <ul className="hidden md:flex items-center gap-1 py-2 overflow-visible">
             {renderNavItems(navItems)}
           </ul>
 
