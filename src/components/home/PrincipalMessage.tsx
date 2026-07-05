@@ -7,6 +7,7 @@ import OptimizedImage from '@/components/ui/OptimizedImage';
 export const PrincipalMessage = memo(function PrincipalMessage() {
   return (
     <div>
+
       <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-800 mb-2">Principal&apos;s Message</h2>
       <div className="w-20 h-1 bg-[#183a6e] mx-auto mb-6 md:mb-8"></div>
       

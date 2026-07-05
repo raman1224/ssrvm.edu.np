@@ -7,6 +7,8 @@ import OptimizedImage from '@/components/ui/OptimizedImage';
 export const GuruSection = memo(function GuruSection() {
   return (
     <div className="flex flex-col lg:flex-row items-center gap-6 lg:gap-12 xl:gap-16">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center gap-6 md:gap-8 lg:gap-12">
+
       <div className="lg:w-2/3 order-2 lg:order-1">
         <h3 className="text-[#bb2124] text-lg md:text-xl font-semibold">- Gurudev</h3>
         <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-3 md:mb-4">
@@ -34,6 +36,7 @@ export const GuruSection = memo(function GuruSection() {
             objectFit="cover"
           />
         </div>
+      </div>
       </div>
     </div>
   );

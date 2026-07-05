@@ -8,7 +8,7 @@ import OptimizedImage from '@/components/ui/OptimizedImage';
 export const Header = memo(function Header() {
   return (
     <div className="bg-white shadow-sm py-2 md:py-3 lg:py-4">
-      <div className="container-custom flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 md:gap-4 group">
           <div className="relative w-10 h-10 md:w-14 md:h-14 lg:w-16 lg:h-16 flex-shrink-0">
             <OptimizedImage

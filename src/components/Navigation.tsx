@@ -1,10 +1,10 @@
 'use client';
 
-import React, { memo, useState, useCallback, useEffect } from 'react';
+import { memo, useState, useCallback, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X, ChevronDown } from 'lucide-react';
-import useMediaQuery from '../hooks/useMediaQuery';
+import useMediaQuery from '@/hooks/useMediaQuery';
 
 interface NavItem {
   label: string;
@@ -71,7 +71,7 @@ const navItems: NavItem[] = [
   { label: 'Contact Us', path: '/contact' },
 ];
 
-export const Navigation = memo(() => {
+export const Navigation = memo(function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const pathname = usePathname();
@@ -82,6 +82,18 @@ export const Navigation = memo(() => {
     setIsOpen(false);
     setOpenDropdown(null);
   }, [pathname]);
+
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
 
   const toggleMenu = useCallback(() => {
     setIsOpen(prev => !prev);
@@ -104,7 +116,7 @@ export const Navigation = memo(() => {
           <li key={item.label} className="relative group">
             <button
               onClick={() => isMobile && toggleDropdown(item.label)}
-              className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-gray-700 hover:text-[#0095e8] transition-colors w-full md:w-auto"
+              className="flex items-center justify-between w-full md:w-auto gap-1 px-3 py-2 text-sm font-medium text-gray-700 hover:text-[#0095e8] transition-colors"
             >
               {item.label}
               <ChevronDown 
@@ -113,9 +125,9 @@ export const Navigation = memo(() => {
               />
             </button>
             <ul className={`
-              ${isMobile ? 'relative' : 'absolute left-0 top-full mt-2'}
+              ${isMobile ? 'relative pl-4' : 'absolute left-0 top-full'}
               ${isMobile ? 'block' : 'hidden group-hover:block'}
-              bg-white shadow-lg rounded-lg min-w-[220px] z-50
+              bg-white md:shadow-lg rounded-lg min-w-[220px] z-50
               ${openDropdown === item.label || !isMobile ? 'block' : 'hidden'}
             `}>
               {item.subItems?.map((sub) => (
@@ -152,7 +164,7 @@ export const Navigation = memo(() => {
 
   return (
     <nav className="bg-[#f6f6f6] border-y border-gray-200 sticky top-0 z-50 shadow-sm">
-      <div className="container mx-auto px-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between md:justify-start">
           {/* Mobile Menu Button */}
           <button
@@ -168,11 +180,17 @@ export const Navigation = memo(() => {
             {renderNavItems(navItems)}
           </ul>
 
-          {/* Mobile Navigation */}
+          {/* Mobile Navigation Overlay */}
           {isOpen && (
-            <ul className="absolute top-full left-0 right-0 bg-white shadow-lg border-t border-gray-200 py-2 px-4 max-h-[80vh] overflow-y-auto md:hidden">
-              {renderNavItems(navItems)}
-            </ul>
+            <>
+              <div 
+                className="fixed inset-0 bg-black/50 z-40 md:hidden"
+                onClick={toggleMenu}
+              />
+              <ul className="absolute top-full left-0 right-0 bg-white shadow-lg border-t border-gray-200 py-2 px-4 max-h-[80vh] overflow-y-auto z-50 md:hidden">
+                {renderNavItems(navItems)}
+              </ul>
+            </>
           )}
         </div>
       </div>

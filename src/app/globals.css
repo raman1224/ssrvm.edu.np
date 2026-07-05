@@ -1,11 +1,110 @@
 @import "tailwindcss";
 
 @layer base {
+  @font-face {
+    font-family: 'Arno Pro';
+    src: url('/fonts/ArnoPro-Bold.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  * {
+    @apply box-border;
+  }
+
   html {
-    scroll-behavior: smooth;
+    @apply scroll-smooth;
   }
 
   body {
-    @apply bg-white text-slate-900 antialiased;
+    @apply m-0 bg-white text-gray-800 antialiased;
+  }
+
+  img {
+    @apply max-w-full h-auto;
+  }
+
+  a {
+    @apply no-underline text-inherit;
+  }
+}
+
+@layer components {
+  .section-padding {
+    @apply py-8 md:py-12 lg:py-16;
+  }
+
+  .section-title {
+    @apply text-2xl sm:text-3xl md:text-4xl font-bold text-center text-[#183a6e] mb-2;
+  }
+
+  .section-subtitle {
+    @apply text-center text-gray-600 text-sm md:text-base mb-8 max-w-2xl mx-auto;
+  }
+
+  .section-divider {
+    @apply w-20 h-1 bg-[#183a6e] mx-auto mb-6 md:mb-8;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Custom scrollbar for notices */
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+  }
+
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.3) rgba(255, 255, 255, 0.1);
+  }
+}
+
+@layer components {
+  /* Page Header */
+  .page-header {
+    @apply relative py-12 md:py-16 lg:py-20 overflow-hidden;
+  }
+  
+  .page-header-overlay {
+    @apply absolute inset-0 bg-black/60;
+  }
+  
+  .page-header-content {
+    @apply relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center;
+  }
+  
+  .page-header-title {
+    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-3 md:mb-4;
+  }
+  
+  .page-header-breadcrumbs {
+    @apply inline-flex items-center gap-2 text-sm md:text-base text-gray-300;
+  }
+  
+  .page-header-breadcrumb-link {
+    @apply hover:text-[#fdb92e] transition-colors;
+  }
+  
+  .page-header-breadcrumb-active {
+    @apply text-[#fdb92e];
   }
 }

@@ -1,6 +1,5 @@
 'use client';
 
-// src/hooks/useMediaQuery.ts
 import { useSyncExternalStore } from 'react';
 
 export default function useMediaQuery(query: string): boolean {
