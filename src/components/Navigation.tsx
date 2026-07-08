@@ -40,12 +40,19 @@ const navItems: NavItem[] = [
   {
     label: 'Activities',
     subItems: [
-      { label: 'Indoor Sports', path: '/activities/indoor-sports' },
-      { label: 'Outdoor Sports', path: '/activities/outdoor-sports' },
-      { label: 'Dance & Music', path: '/activities/dance-music' },
-      { label: 'Art', path: '/activities/art' },
-      { label: 'Community Service', path: '/activities/community-service' },
-      { label: 'Educational Trips', path: '/activities/educational-trips' },
+      // { label: 'Indoor Sports', path: '/activities/indoor-sports' },
+      // { label: 'Outdoor Sports', path: '/activities/outdoor-sports' },
+      // { label: 'Dance & Music', path: '/activities/dance-music' },
+      // { label: 'Art', path: '/activities/art' },
+      // { label: 'Community Service', path: '/activities/community-service' },
+      // { label: 'Educational Trips', path: '/activities/educational-trips' },
+            { label: 'Indoor Sports', path: '/activities' },
+      { label: 'Outdoor Sports', path: '/activities' },
+      { label: 'Dance & Music', path: '/activities' },
+      { label: 'Art', path: '/activities' },
+      { label: 'Community Service', path: '/activities' },
+      { label: 'Educational Trips', path: '/activities' },
+
     ]
   },
   { label: 'Facilities', path: '/facilities' },
@@ -55,18 +62,21 @@ const navItems: NavItem[] = [
     label: 'Admission',
     subItems: [
       { label: 'Admission Form', path: '/admission' },
-      { label: 'Admission Procedure', path: '/admission/procedure' },
+      { label: 'Admission Procedure', path: '/admission' },
     ]
   },
   {
     label: 'Awards',
     subItems: [
-      { label: "Principal's Awards", path: '/awards/principal' },
-      { label: 'School Awards', path: '/awards/school' },
-      { label: "Student's Awards", path: '/awards/students' },
+      { label: "Principal's Awards", path: '/awards/principals-award-achievement' },
+      { label: 'School Awards', path: '/awards/schools-award-achievement' },
+      { label: "Student's Awards", path: '/awards/schools-award-achievement' },
     ]
   },
   { label: 'Blog', path: '/blog' },
+    { label: 'Association', path: '/association' },
+  { label: 'Soft Copies', path: '/soft-copies' },
+
   { label: 'Career', path: '/career' },
   { label: 'Contact Us', path: '/contact' },
 ];
@@ -130,8 +140,8 @@ export const Navigation = memo(function Navigation() {
               bg-white md:shadow-lg rounded-lg min-w-[220px] z-50
               ${openDropdown === item.label || !isMobile ? 'block' : 'hidden'}
             `}>
-              {item.subItems?.map((sub) => (
-                <li key={sub.path}>
+{item.subItems?.map((sub) => (
+  <li key={`${sub.path}-${sub.label}`}>
                   <Link
                     href={sub.path}
                     className="block px-4 py-2.5 text-sm text-gray-600 hover:bg-gray-50 hover:text-[#0095e8] transition-colors border-b border-gray-100 last:border-0"
