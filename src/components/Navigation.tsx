@@ -22,19 +22,19 @@ const navItems: NavItem[] = [
       { label: 'SSRVM Strategy & Our Pedagogy', path: '/our-pedagogy' },
       { label: 'Why Choose SSRVM?', path: '/why-choose' },
       { label: "Principal's Message", path: '/principal-message' },
-      { label: 'Vision & Mission', path: '/mission-vision' },
+      { label: 'Vision & Mission (Guiding Principles)', path: '/mission-vision' },
       { label: 'SSRVM Philosophy', path: '/philosophy' },
     ]
   },
   {
     label: 'Academics',
     subItems: [
-      { label: 'Career Counselling', path: '/academics/career-counselling' },
-      { label: 'School Calendar', path: '/academics/calendar' },
-      { label: 'Holiday Homework', path: '/academics/holiday-homework' },
-      { label: 'School Syllabus', path: '/academics/syllabus' },
-      { label: 'Exam Routines', path: '/academics/exam-routines' },
-      { label: 'Academic Circulars', path: '/academics/circulars' },
+      { label: 'Career Counselling', path: '/' },
+      { label: 'School Calendar', path: '/' },
+      { label: 'Holiday Homework', path: '/' },
+      { label: 'School Syllabus', path: '/' },
+      { label: 'Exam Routines', path: '/' },
+      { label: 'Academic Circulars', path: '/' },
     ]
   },
   {
@@ -70,7 +70,7 @@ const navItems: NavItem[] = [
     subItems: [
       { label: "Principal's Awards", path: '/awards/principals-award-achievement' },
       { label: 'School Awards', path: '/awards/schools-award-achievement' },
-      { label: "Student's Awards", path: '/awards/schools-award-achievement' },
+      { label: "Student's Awards", path: '/awards/students-award-achievement' },
     ]
   },
   { label: 'Blog', path: '/blog' },
@@ -209,3 +209,5 @@ export const Navigation = memo(function Navigation() {
 });
 
 Navigation.displayName = 'Navigation';
+
+

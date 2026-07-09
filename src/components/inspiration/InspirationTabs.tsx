@@ -2,7 +2,7 @@
 
 import { memo, useState, useCallback } from 'react';
 import OptimizedImage from '@/components/ui/OptimizedImage';
-import { Quote, Building2, Users, Globe } from 'lucide-react';
+import { Building2, Users, Globe } from 'lucide-react';
 
 interface Tab {
   id: string;
@@ -31,44 +31,67 @@ const tabs: Tab[] = [
 function FounderTab() {
   return (
     <div className="space-y-6 md:space-y-8">
-      <div className="text-center">
-        <h4 className="text-lg md:text-xl text-[#bb2124] font-semibold">Founded by</h4>
-        <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#183a6e] mt-2">
-          Gurudev Sri Sri Ravi Shankar
-        </h3>
+      {/* Single Hero Section: bg image + overlaid title (top) + overlaid quote box (bottom-left) */}
+      <div className="relative overflow-hidden min-h-[420px] md:min-h-[500px] lg:min-h-[600px]">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <OptimizedImage
+            src="/images/inspiration/bg4.webp"
+            alt="Gurudev Sri Sri Ravi Shankar"
+            fill
+            className="w-full h-full"
+            objectFit="cover"
+          />
+          {/* subtle overlay so white title text stays legible on any photo */}
+          <div className="absolute inset-0 bg-black/10"></div>
+        </div>
+
+        {/* Title - top left */}
+        <div className="relative z-10 px-6 md:px-10 pt-8 md:pt-12">
+          <h4 className="text-base md:text-lg text-white/90 font-semibold">
+            Founded by
+          </h4>
+          <h3 className="text-2xl md:text-4xl lg:text-5xl font-bold text-[#1a1464] mt-1">
+            Gurudev Sri Sri Ravi Shankar
+          </h3>
+        </div>
+
+        {/* Quote box - bottom left, overlapping the image */}
+        <div className="absolute left-6 right-6 md:left-10 md:right-auto bottom-6 md:bottom-10 z-10 bg-[#1a1464]/95 text-white p-6 md:p-8 rounded-md max-w-xl">
+          <h2 className="text-lg md:text-xl lg:text-2xl font-light italic font-serif leading-snug">
+            &quot;Education is a vehicle for transformation or metamorphosis of the
+            self and an aid to the growth of economy.&quot;
+          </h2>
+          <p className="text-white/90 font-medium mt-4">
+            -Sri Sri Ravi Shankar
+          </p>
+        </div>
       </div>
 
-      <div className="bg-[#210d7d] text-white p-6 md:p-8 lg:p-10 rounded-lg">
-        <Quote className="w-10 h-10 md:w-12 md:h-12 text-[#feb505] mb-4" />
-        <h2 className="text-xl md:text-2xl lg:text-3xl font-light italic font-serif">
-          &quot;Education is a vehicle for transformation or metamorphosis of the self and an aid to the growth of economy.&quot;
-        </h2>
-        <p className="text-right text-[#feb505] font-semibold mt-4">- Sri Sri Ravi Shankar</p>
-      </div>
-
-      <div className="space-y-4 text-gray-700 leading-relaxed">
+      {/* Text Content */}
+      <div className="space-y-4 text-gray-700 leading-relaxed px-6 md:px-0">
         <p>
-          Gurudev Sri Sri Ravi Shankar is a globally revered spiritual and humanitarian leader. He has spearheaded an 
-          unprecedented worldwide movement for a stress-free, violence-free society. Through a myriad of programs and 
-          teachings, a network of organizations including the Art of Living and the International Association for Human 
-          Values, and a rapidly growing presence across 156 countries, Gurudev has reached an estimated 450 million people. 
-          Gurudev has developed unique, impactful programs that empower, equip and transform individuals to tackle challenges 
+          Gurudev Sri Sri Ravi Shankar is a globally revered spiritual and humanitarian leader. He has spearheaded an
+          unprecedented worldwide movement for a stress-free, violence-free society. Through a myriad of programs and
+          teachings, a network of organizations including the Art of Living and the International Association for Human
+          Values, and a rapidly growing presence across 156 countries, Gurudev has reached an estimated 450 million people.
+          Gurudev has developed unique, impactful programs that empower, equip and transform individuals to tackle challenges
           at global, national, community and individual levels.
         </p>
 
         <div className="bg-[#f8f9fa] border-l-4 border-[#feb505] p-4 md:p-6 rounded-r-lg">
           <p className="text-base md:text-lg font-medium text-gray-800 italic">
-            &quot;Basic human values need to be encouraged in the classroom. A child is born with these values and a teacher 
-            needs to uncover them. What are these human values? Compassion, Co-operation, friendliness, smiles, laughter, 
+            &quot;Basic human values need to be encouraged in the classroom. A child is born with these values and a teacher
+            needs to uncover them. What are these human values? Compassion, Co-operation, friendliness, smiles, laughter,
             lightness, wanting to help, a sense of belonging and caring for each other.&quot;
           </p>
         </div>
 
         <p>
-          Through his initiatives and addresses, Sri Sri has consistently emphasized the need for reinforcing human values 
-          and recognizing humanity as our highest identity beyond nation, faith and gender. Fostering interfaith harmony, 
-          bridging communal divides and calling for a multi-cultural education as the remedy for fanaticism are a significant 
-          part of his efforts to achieve sustainable peace on our planet. Each of our institute is based on this philosophy 
+          Through his initiatives and addresses, Sri Sri has consistently emphasized the need for reinforcing human values
+          and recognizing humanity as our highest identity beyond nation, faith and gender. Fostering interfaith harmony,
+          bridging communal divides and calling for a multi-cultural education as the remedy for fanaticism are a significant
+          part of his efforts to achieve sustainable peace on our planet. Each of our institute is based on this philosophy
           and is imparting education to thousands, so as to create a better society.
         </p>
       </div>
@@ -76,6 +99,7 @@ function FounderTab() {
   );
 }
 
+export default FounderTab;
 function TrustTab() {
   const stats = [
     { value: '68', label: 'Vidya Mandirs' },
@@ -96,7 +120,7 @@ function TrustTab() {
       {/* Trust Info */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
         <div className="space-y-4 text-gray-700 leading-relaxed">
-          <h3 className="text-2xl md:text-3xl font-bold text-[#183a6e] flex items-center gap-3">
+          <h3 className="text-2xl md:text-3xl font-bold text-[#505254] flex items-center gap-3">
             <Building2 className="text-[#bb2124]" size={32} />
             Sri Sri Ravi Shankar Vidya Mandir Trust
           </h3>

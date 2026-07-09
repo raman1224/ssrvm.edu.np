@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { PageHeader } from '@/components/ui/PageHeader';
-import { ActivitiesContent } from '@/components/activities/ActivitiesContent';
+import  ActivitiesContent  from '@/components/activities/ActivitiesContent';
 
 export const metadata: Metadata = {
   title: 'Activities | Sri Sri Ravishankar Vidya Mandir, Biratnagar, Nepal',
