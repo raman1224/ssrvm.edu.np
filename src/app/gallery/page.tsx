@@ -3,18 +3,18 @@ import { PageHeader } from '@/components/ui/PageHeader';
 
 export const metadata: Metadata = {
   title: 'Gallery | Sri Sri Ravishankar Vidya Mandir, Biratnagar, Nepal',
-  description: 'Album of SSRVM ',
-  keywords: 'Gallery SSRVM, Sri Sri Ravishankar Vidya Mandir, School in Biratnagar, Education Nepal',
+  description: 'Explore the photo gallery of Sri Sri Ravishankar Vidya Mandir showcasing school events, activities, and memorable moments.',
+  keywords: 'SSRVM Gallery, School Photos, School Events, Sri Sri Ravishankar Vidya Mandir, School Gallery',
   openGraph: {
     title: 'Gallery | Sri Sri Ravishankar Vidya Mandir',
-    description: 'A revered temple of knowledge where every child\'s potential is nurtured.',
+    description: 'Explore the photo gallery of SSRVM showcasing school events and activities.',
     url: 'https://ssrvm.edu.np/gallery',
     images: [
       {
-        url: '/images/gallery/img1.webp',
+        url: '/images/og-gallery.jpg',
         width: 1200,
         height: 630,
-        alt: 'Gallery Sri Sri Ravishankar Vidya Mandir',
+        alt: 'SSRVM Gallery',
       },
     ],
   },

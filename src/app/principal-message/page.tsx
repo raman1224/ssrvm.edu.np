@@ -3,19 +3,19 @@ import { PageHeader } from '@/components/ui/PageHeader';
 import { PrincipalMessage } from '@/components/home/PrincipalMessage';
 
 export const metadata: Metadata = {
-  title: 'SSRVM Principal Message | Sri Sri Ravishankar Vidya Mandir, Biratnagar, Nepal',
-  description: 'SSRVM Principal Message - We never compromise on our values. Our core values and the goal of education is to increase awareness not information.',
-  keywords: 'SSRVM Principal Message, Core Values, Education Philosophy, Sri Sri Ravishankar Vidya Mandir, Values Education',
+  title: "Principal's Message | Sri Sri Ravishankar Vidya Mandir, Biratnagar, Nepal",
+  description: "Principal's message from Sri Sri Ravishankar Vidya Mandir. Our Principal shares her vision and commitment to holistic education.",
+  keywords: 'Principal Message, SSRVM Principal, Seema Agrawal, School Principal, Sri Sri Ravishankar Vidya Mandir',
   openGraph: {
-    title: 'SSRVM Principal Message | Sri Sri Ravishankar Vidya Mandir',
-    description: 'We never compromise on our values. The goal of education is to increase awareness not information.',
+    title: "Principal's Message | Sri Sri Ravishankar Vidya Mandir",
+    description: "Principal's vision and commitment to holistic education at SSRVM.",
     url: 'https://ssrvm.edu.np/principal-message',
     images: [
       {
-        url: '/images/og-principalmessage.jpg',
+        url: '/images/og-principal.jpg',
         width: 1200,
         height: 630,
-        alt: 'SSRVM Principal Message - Core Values',
+        alt: "Principal's Message - Sri Sri Ravishankar Vidya Mandir",
       },
     ],
   },

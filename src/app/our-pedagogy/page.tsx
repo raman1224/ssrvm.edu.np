@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     url: 'https://ssrvm.edu.np/our-pedagogy',
     images: [
       {
-        url: '/images/pedagogy/og-pedagogy.jpg',
+        url: '/images/og-pedagogy.jpg',
         width: 1200,
         height: 630,
         alt: 'SSRVM Strategy & Our Pedagogy',

@@ -87,13 +87,11 @@ export const Navigation = memo(function Navigation() {
   const pathname = usePathname();
   const isMobile = useMediaQuery('(max-width: 768px)');
 
-  // Close mobile menu on route change
   useEffect(() => {
     setIsOpen(false);
     setOpenDropdown(null);
   }, [pathname]);
 
-  // Prevent body scroll when mobile menu is open
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -117,34 +115,39 @@ export const Navigation = memo(function Navigation() {
     return pathname === path;
   }, [pathname]);
 
+  // Generate unique key for sub-items
+  const getSubItemKey = useCallback((sub: { label: string; path: string }, index: number) => {
+    return `${sub.path}-${index}`;
+  }, []);
+
   const renderNavItems = useCallback((items: NavItem[]) => {
-    return items.map((item) => {
+    return items.map((item, itemIndex) => {
       const hasSubItems = item.subItems && item.subItems.length > 0;
 
       if (hasSubItems) {
         return (
-          <li key={item.label} className="relative group">
+          <li key={`${item.label}-${itemIndex}`} className="relative group">
             <button
               onClick={() => isMobile && toggleDropdown(item.label)}
-              className="flex items-center justify-between w-full md:w-auto gap-1 px-3 py-2 text-sm font-medium text-gray-700 hover:text-[#0095e8] transition-colors"
+              className="flex items-center justify-between w-full md:w-auto gap-1 px-2.5 py-2 text-xs md:text-sm font-semibold uppercase tracking-wider text-white hover:text-[#feb505] transition-colors"
             >
               {item.label}
               <ChevronDown 
-                size={16} 
+                size={14} 
                 className={`transition-transform ${openDropdown === item.label ? 'rotate-180' : ''}`}
               />
             </button>
             <ul className={`
               ${isMobile ? 'relative pl-4' : 'absolute left-0 top-full'}
               ${isMobile ? 'block' : 'hidden group-hover:block'}
-              bg-white md:shadow-lg rounded-lg min-w-[220px] z-50
+              bg-white md:shadow-lg rounded-lg min-w-[180px] z-50
               ${openDropdown === item.label || !isMobile ? 'block' : 'hidden'}
             `}>
-{item.subItems?.map((sub) => (
-  <li key={`${sub.path}-${sub.label}`}>
+              {item.subItems?.map((sub, subIndex) => (
+                <li key={getSubItemKey(sub, subIndex)}>
                   <Link
                     href={sub.path}
-                    className="block px-4 py-2.5 text-sm text-gray-600 hover:bg-gray-50 hover:text-[#0095e8] transition-colors border-b border-gray-100 last:border-0"
+                    className="block px-4 py-2.5 text-xs md:text-sm font-medium text-gray-700 hover:bg-[#183a6e] hover:text-white transition-colors border-b border-gray-100 last:border-0"
                   >
                     {sub.label}
                   </Link>
@@ -156,13 +159,13 @@ export const Navigation = memo(function Navigation() {
       }
 
       return (
-        <li key={item.path}>
+        <li key={`${item.path}-${itemIndex}`}>
           <Link
             href={item.path || '/'}
-            className={`block px-3 py-2 text-sm font-medium transition-colors ${
+            className={`block px-2.5 py-2 text-xs md:text-sm font-semibold uppercase tracking-wider transition-colors ${
               isActivePath(item.path || '/')
-                ? 'text-[#0095e8]'
-                : 'text-gray-700 hover:text-[#0095e8]'
+                ? 'text-[#feb505]'
+                : 'text-white hover:text-[#feb505]'
             }`}
           >
             {item.label}
@@ -170,23 +173,23 @@ export const Navigation = memo(function Navigation() {
         </li>
       );
     });
-  }, [isMobile, openDropdown, toggleDropdown, isActivePath]);
+  }, [isMobile, openDropdown, toggleDropdown, isActivePath, getSubItemKey]);
 
   return (
-    <nav className="bg-[#f6f6f6] border-y border-gray-200 sticky top-0 z-50 shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between md:justify-start">
+    <nav className="bg-[#183a6e] border-y border-[#2a4a7a] sticky top-0 z-50 shadow-md">
+      <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
+        <div className="flex items-center justify-between">
           {/* Mobile Menu Button */}
           <button
             onClick={toggleMenu}
-            className="md:hidden p-2 hover:bg-gray-200 rounded-lg transition-colors"
+            className="md:hidden p-2 hover:bg-[#2a4a7a] rounded-lg transition-colors text-white"
             aria-label="Toggle menu"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
 
-          {/* Desktop Navigation */}
-          <ul className="hidden md:flex items-center gap-1 py-2 overflow-visible">
+          {/* Desktop Navigation - Full width with space between */}
+          <ul className="hidden md:flex items-center justify-between w-full py-1">
             {renderNavItems(navItems)}
           </ul>
 
@@ -207,7 +210,3 @@ export const Navigation = memo(function Navigation() {
     </nav>
   );
 });
-
-Navigation.displayName = 'Navigation';
-
-

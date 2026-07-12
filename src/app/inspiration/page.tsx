@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     url: 'https://ssrvm.edu.np/inspiration',
     images: [
       {
-        url: '/images/inspiration/og-inspiration.jpg',
+        url: '/images/og-inspiration.jpg',
         width: 1200,
         height: 630,
         alt: 'Our Inspiration - Gurudev Sri Sri Ravi Shankar',
@@ -20,7 +20,6 @@ export const metadata: Metadata = {
     ],
   },
 };
-
 export default function InspirationPage() {
   return (
     <>

@@ -20,7 +20,6 @@ export const metadata: Metadata = {
     ],
   },
 };
-
 export default function PhilosophyPage() {
   return (
     <>

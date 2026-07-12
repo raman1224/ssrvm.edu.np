@@ -4,23 +4,22 @@ import { JobApplication } from '@/components/career/JobApplication';
 
 export const metadata: Metadata = {
   title: 'Career | Sri Sri Ravishankar Vidya Mandir, Biratnagar, Nepal',
-  description: 'Career of SSRVM ',
-  keywords: 'Career SSRVM, Sri Sri Ravishankar Vidya Mandir, School in Biratnagar, Education Nepal',
+  description: 'Career opportunities at Sri Sri Ravishankar Vidya Mandir. Join our team of dedicated educators and staff.',
+  keywords: 'SSRVM Career, School Jobs, Teaching Jobs, Career Opportunities, Sri Sri Ravishankar Vidya Mandir',
   openGraph: {
     title: 'Career | Sri Sri Ravishankar Vidya Mandir',
-    description: 'A revered temple of knowledge where every child\'s potential is nurtured.',
+    description: 'Career opportunities at SSRVM - Join our team of dedicated educators.',
     url: 'https://ssrvm.edu.np/career',
     images: [
       {
-        url: '/images/img1.webp',
+        url: '/images/og-career.jpg',
         width: 1200,
         height: 630,
-        alt: 'Career Sri Sri Ravishankar Vidya Mandir',
+        alt: 'Career - Sri Sri Ravishankar Vidya Mandir',
       },
     ],
   },
 };
-
 export default function CareerPage() {
   return (
     <>

@@ -8,7 +8,7 @@ interface LayoutProps {
 }
 export const Layout = memo(({ children}: LayoutProps) => {
     return (
-        <div className="min-h-screen  flex flex-col">
+        <div className="min-h-screen flex flex-col">
             <TopBar />
             <Header />
             <Navigation />

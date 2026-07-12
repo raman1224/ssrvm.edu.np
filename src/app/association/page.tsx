@@ -3,18 +3,18 @@ import { PageHeader } from '@/components/ui/PageHeader';
 
 export const metadata: Metadata = {
   title: 'Association | Sri Sri Ravishankar Vidya Mandir, Biratnagar, Nepal',
-  description: 'Association of SSRVM ',
-  keywords: 'Association SSRVM, Sri Sri Ravishankar Vidya Mandir, School in Biratnagar, Education Nepal',
+  description: 'SSRVM Association - Parent-Teacher Association and other school associations. Get involved in school activities and events.',
+  keywords: 'SSRVM Association, PTA, Parent Teacher Association, School Associations, Sri Sri Ravishankar Vidya Mandir',
   openGraph: {
     title: 'Association | Sri Sri Ravishankar Vidya Mandir',
-    description: 'A revered temple of knowledge where every child\'s potential is nurtured.',
+    description: 'SSRVM Association - Get involved in school activities and events.',
     url: 'https://ssrvm.edu.np/association',
     images: [
       {
-        url: '/images/img1.webp',
+        url: '/images/og-association.jpg',
         width: 1200,
         height: 630,
-        alt: 'Association Sri Sri Ravishankar Vidya Mandir',
+        alt: 'Association - Sri Sri Ravishankar Vidya Mandir',
       },
     ],
   },

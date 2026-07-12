@@ -3,18 +3,18 @@ import { PageHeader } from '@/components/ui/PageHeader';
 
 export const metadata: Metadata = {
   title: 'Blog | Sri Sri Ravishankar Vidya Mandir, Biratnagar, Nepal',
-  description: 'Blog of SSRVM ',
-  keywords: 'Blog SSRVM, Sri Sri Ravishankar Vidya Mandir, School in Biratnagar, Education Nepal',
+  description: 'Read the latest blogs and articles from Sri Sri Ravishankar Vidya Mandir about education, activities, and school events.',
+  keywords: 'SSRVM Blog, School Blog, Education Articles, Sri Sri Ravishankar Vidya Mandir',
   openGraph: {
     title: 'Blog | Sri Sri Ravishankar Vidya Mandir',
-    description: 'A revered temple of knowledge where every child\'s potential is nurtured.',
+    description: 'Read the latest blogs and articles from SSRVM.',
     url: 'https://ssrvm.edu.np/blog',
     images: [
       {
-        url: '/images/img1.webp',
+        url: '/images/og-blog.jpg',
         width: 1200,
         height: 630,
-        alt: 'Blog Sri Sri Ravishankar Vidya Mandir',
+        alt: 'Blog - Sri Sri Ravishankar Vidya Mandir',
       },
     ],
   },

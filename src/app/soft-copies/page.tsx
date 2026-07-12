@@ -2,19 +2,19 @@ import { Metadata } from 'next';
 import { PageHeader } from '@/components/ui/PageHeader';
 
 export const metadata: Metadata = {
-  title: 'SoftCopies | Sri Sri Ravishankar Vidya Mandir, Biratnagar, Nepal',
-  description: 'SoftCopies of SSRVM ',
-  keywords: 'SoftCopies SSRVM, Sri Sri Ravishankar Vidya Mandir, School in Biratnagar, Education Nepal',
+  title: 'Soft Copies | Sri Sri Ravishankar Vidya Mandir, Biratnagar, Nepal',
+  description: 'Download soft copies and documents from Sri Sri Ravishankar Vidya Mandir including school calendars, syllabi, and academic resources.',
+  keywords: 'SSRVM Soft Copies, School Documents, Download Forms, Sri Sri Ravishankar Vidya Mandir',
   openGraph: {
-    title: 'SoftCopies | Sri Sri Ravishankar Vidya Mandir',
-    description: 'A revered temple of knowledge where every child\'s potential is nurtured.',
+    title: 'Soft Copies | Sri Sri Ravishankar Vidya Mandir',
+    description: 'Download soft copies and documents from SSRVM.',
     url: 'https://ssrvm.edu.np/soft-copies',
     images: [
       {
-        url: '/images/img1.webp',
+        url: '/images/og-soft-copies.jpg',
         width: 1200,
         height: 630,
-        alt: 'SoftCopies Sri Sri Ravishankar Vidya Mandir',
+        alt: 'Soft Copies - Sri Sri Ravishankar Vidya Mandir',
       },
     ],
   },

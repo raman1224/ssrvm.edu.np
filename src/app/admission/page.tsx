@@ -4,23 +4,22 @@ import { AdmissionForm } from '@/components/admission/AdmissionForm';
 
 export const metadata: Metadata = {
   title: 'Admission | Sri Sri Ravishankar Vidya Mandir, Biratnagar, Nepal',
-  description: 'Admission of SSRVM ',
-  keywords: 'Admission SSRVM, Sri Sri Ravishankar Vidya Mandir, School in Biratnagar, Education Nepal',
+  description: 'Admissions are now open for the 2081(2024-25) session at Sri Sri Ravishankar Vidya Mandir. Limited seats available for Class I to IX.',
+  keywords: 'SSRVM Admission, School Admission, Admission Form, Sri Sri Ravishankar Vidya Mandir, Biratnagar School Admission',
   openGraph: {
     title: 'Admission | Sri Sri Ravishankar Vidya Mandir',
-    description: 'A revered temple of knowledge where every child\'s potential is nurtured.',
-    url: 'https://ssrvm.edu.np/gallery',
+    description: 'Admissions are now open for the 2081(2024-25) session. Limited seats available.',
+    url: 'https://ssrvm.edu.np/admission',
     images: [
       {
-        url: '/images/img1.webp',
+        url: '/images/og-admission.jpg',
         width: 1200,
         height: 630,
-        alt: 'Admission Sri Sri Ravishankar Vidya Mandir',
+        alt: 'Admission - Sri Sri Ravishankar Vidya Mandir',
       },
     ],
   },
 };
-
 export default function AdmissionPage() {
   return (
     <>

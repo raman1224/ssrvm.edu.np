@@ -1,4 +1,3 @@
-// src/app/page.tsx
 import { HeroSlider } from '@/components/home/HeroSlider';
 import { WelcomeSection } from '@/components/home/WelcomeSection';
 import { VisionAchievements } from '@/components/home/VisionAchievements';
@@ -7,9 +6,29 @@ import { PrincipalMessage } from '@/components/home/PrincipalMessage';
 import { WhyChooseUs } from '@/components/home/WhyChooseUs';
 import { PhotoGallery } from '@/components/home/PhotoGallery';
 import { LocationSection } from '@/components/home/LocationSection';
+import { Metadata } from 'next';
 
 export const dynamic = 'force-static';
 export const revalidate = 3600;
+
+export const metadata: Metadata = {
+  title: 'Home | Sri Sri Ravishankar Vidya Mandir, Biratnagar, Nepal',
+  description: 'Sri Sri Ravishankar Vidya Mandir, a revered temple of knowledge where every child\'s potential is nurtured. Established in 2064 B.S.',
+  keywords: 'SSRVM, Sri Sri Ravishankar Vidya Mandir, School in Biratnagar, Education Nepal, Best School in Nepal',
+  openGraph: {
+    title: 'Home | Sri Sri Ravishankar Vidya Mandir',
+    description: 'A revered temple of knowledge where every child\'s potential is nurtured.',
+    url: 'https://ssrvm.edu.np',
+    images: [
+      {
+        url: '/images/og-home.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Sri Sri Ravishankar Vidya Mandir',
+      },
+    ],
+  },
+};
 
 export default function HomePage() {
   return (

@@ -3,19 +3,19 @@ import { PageHeader } from '@/components/ui/PageHeader';
 import { MissionVisionContent } from '@/components/mission-vision/MissionVisionContent';
 
 export const metadata: Metadata = {
-  title: 'Our Mission Vision | Sri Sri Ravishankar Vidya Mandir, Biratnagar, Nepal',
-  description: 'Founded by Gurudev Sri Sri Ravi Shankar, a globally revered spiritual and humanitarian leader. Our inspiration comes from the Art of Living Foundation.',
-  keywords: 'Gurudev Sri Sri Ravi Shankar, Art of Living, SSRVM Trust, Inspiration, Sri Sri Ravishankar Vidya Mandir',
+  title: 'Vision & Mission | Sri Sri Ravishankar Vidya Mandir, Biratnagar, Nepal',
+  description: 'Our vision is to broaden the vision and deepen the roots. Our mission is to discover the true potential within every child through joy of learning.',
+  keywords: 'SSRVM Vision, SSRVM Mission, School Vision, School Mission, Sri Sri Ravishankar Vidya Mandir',
   openGraph: {
-    title: 'Our Mission Vision | Sri Sri Ravishankar Vidya Mandir',
-    description: 'Founded by Gurudev Sri Sri Ravi Shankar, a globally revered spiritual and humanitarian leader.',
-    url: 'https://ssrvm.edu.np/missionvision',
+    title: 'Vision & Mission | Sri Sri Ravishankar Vidya Mandir',
+    description: 'Broaden the vision and deepen the roots - Discover the true potential within every child.',
+    url: 'https://ssrvm.edu.np/mission-vision',
     images: [
       {
-        url: '/images/missionvision/og-inspiration.jpg',
+        url: '/images/og-mission-vision.jpg',
         width: 1200,
         height: 630,
-        alt: 'Our Inspiration - Gurudev Sri Sri Ravi Shankar',
+        alt: 'Vision & Mission - Sri Sri Ravishankar Vidya Mandir',
       },
     ],
   },
