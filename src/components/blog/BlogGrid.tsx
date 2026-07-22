@@ -1,12 +1,19 @@
+'use client';
+
+import { memo } from 'react';
 import { Blog } from '@/lib/supabase/blog';
 import { BlogCard } from './BlogCard';
 
-export function BlogGrid({ blogs }: { blogs: Blog[] }) {
+interface BlogGridProps {
+  blogs: Blog[];
+}
+
+export const BlogGrid = memo(function BlogGrid({ blogs }: BlogGridProps) {
   if (blogs.length === 0) {
     return (
-      <p className="text-center text-gray-500 py-16">
-        No blog posts found.
-      </p>
+      <div className="text-center py-16">
+        <p className="text-gray-500">No blog posts found.</p>
+      </div>
     );
   }
 
@@ -17,4 +24,4 @@ export function BlogGrid({ blogs }: { blogs: Blog[] }) {
       ))}
     </div>
   );
-}
+});

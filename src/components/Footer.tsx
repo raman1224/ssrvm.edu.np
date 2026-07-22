@@ -119,12 +119,10 @@ export const Footer = memo(() => {
 
         {/* Copyright */}
         <div className="mt-8 pt-6 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-2 text-sm">
-          <p className="text-gray-400">
-            All Rights Reserved for{' '}
-            <Link href="/" className="text-[#2d9cc1] hover:text-[#ffc844] transition-colors">
-              Sri Sri Ravishankar Vidya Mandir
-            </Link>
-          </p>
+<p className="text-xs text-gray-400">
+  All Rights Reserved for Sri Sri Ravishankar Vidya Mandir | 
+  <Link href="/admin/login" className="hover:text-gray-300 ml-1">Staff Login</Link>
+</p>
           <p className="text-gray-400">
             Powered by{' '}
             <a 

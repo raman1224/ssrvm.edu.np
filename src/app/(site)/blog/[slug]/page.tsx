@@ -3,14 +3,18 @@ import { PageHeader } from '@/components/ui/PageHeader';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 
-export default async function BlogDetailPage({ params }: { params: { slug: string } }) {
+export default async function BlogDetailPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
   let blog;
   try {
-    blog = await getBlogBySlug(params.slug);
+    blog = await getBlogBySlug(slug);
   } catch {
     notFound();
   }
-
   return (
     <>
       <PageHeader
