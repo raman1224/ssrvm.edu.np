@@ -131,7 +131,7 @@ export const Footer = memo(() => {
               rel="noopener noreferrer"
               className="text-[#2d9cc1] hover:text-[#ffc844] transition-colors"
             >
-              Krishna Tech
+              intern 
             </a>
           </p>
         </div>
