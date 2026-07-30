@@ -2,13 +2,13 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { LayoutDashboard, FileText, Image, GraduationCap, Bell } from 'lucide-react';
+import { LayoutDashboard, FileText, Image, Bell, Calendar } from 'lucide-react';
 
 const menuItems = [
   { label: 'Dashboard', href: '/admin/dashboard', icon: LayoutDashboard },
   { label: 'Blog', href: '/admin/blog', icon: FileText },
   { label: 'Gallery', href: '/admin/gallery', icon: Image },
-  { label: 'Admissions', href: '/admin/admissions', icon: GraduationCap },
+  { label: 'Events', href: '/admin/events', icon: Calendar },
   { label: 'Notices', href: '/admin/notices', icon: Bell },
 ];
 

@@ -3,18 +3,26 @@ import Link from 'next/link';
 import { Blog } from '@/lib/supabase/blog';
 
 export function BlogCard({ blog }: { blog: Blog }) {
+  const hasImage = blog.cover_image && blog.cover_image.trim() !== '';
+
   return (
     <Link
       href={`/blog/${blog.slug}`}
       className="group block bg-white rounded-xl shadow-sm hover:shadow-lg transition-shadow overflow-hidden"
     >
-      <div className="relative h-48 w-full overflow-hidden">
-        <Image
-          src={blog.cover_image || '/images/blog-placeholder.jpg'}
-          alt={blog.title}
-          fill
-          className="object-cover group-hover:scale-105 transition-transform duration-300"
-        />
+      <div className="relative h-48 w-full overflow-hidden bg-gray-100">
+        {hasImage ? (
+          <Image
+            src={blog.cover_image}
+            alt={blog.title}
+            fill
+            className="object-cover group-hover:scale-105 transition-transform duration-300"
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#183a6e] to-[#2c7ac2] text-white text-sm font-medium">
+            SSRVM
+          </div>
+        )}
         {blog.category && (
           <span className="absolute top-3 left-3 bg-primary text-white text-xs px-3 py-1 rounded-full">
             {blog.category}

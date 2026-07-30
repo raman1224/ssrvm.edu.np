@@ -2,21 +2,17 @@
 
 import dynamic from 'next/dynamic';
 import { Loader2 } from 'lucide-react';
+import { Event } from '@/lib/supabase/events';
 
-const BlogForm = dynamic(() => import('@/components/admin/BlogForm'), {
+const EventForm = dynamic(() => import('./EventForm'), {
   loading: () => (
     <div className="flex items-center justify-center h-64 bg-white rounded-xl shadow-sm">
       <Loader2 className="animate-spin text-[#183a6e]" size={32} />
     </div>
   ),
-  ssr: false, 
+  ssr: false,
 });
 
-export default function CreateBlogPage() {
-  return (
-    <div>
-      <h2 className="text-xl font-semibold mb-6">Create New Blog</h2>
-      <BlogForm />
-    </div>
-  );
+export default function EditEventClient({ initialData }: { initialData: Event }) {
+  return <EventForm initialData={initialData} />;
 }

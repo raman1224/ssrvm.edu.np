@@ -1,14 +1,15 @@
 import { supabase } from './client';
 
-export interface Blog {
+export interface NewsItem {
   id: string;
   title: string;
   slug: string;
-  excerpt: string;
+  summary: string;
   content: string;
   cover_image: string;
   category: string;
-  author: string;
+  source: string;
+  is_breaking: boolean;
   is_published: boolean;
   published_at: string;
   created_at: string;
@@ -16,12 +17,12 @@ export interface Blog {
 }
 
 // ---- PUBLIC ----
-export async function getBlogs(page = 1, limit = 6, category?: string) {
+export async function getNews(page = 1, limit = 6, category?: string) {
   const from = (page - 1) * limit;
   const to = from + limit - 1;
 
   let query = supabase
-    .from('blogs')
+    .from('news')
     .select('*', { count: 'exact' })
     .eq('is_published', true)
     .order('published_at', { ascending: false })
@@ -31,48 +32,50 @@ export async function getBlogs(page = 1, limit = 6, category?: string) {
 
   const { data, count, error } = await query;
   if (error) throw error;
-  return { blogs: data as Blog[], total: count ?? 0 };
+  return { news: data as NewsItem[], total: count ?? 0 };
 }
 
-export async function getBlogBySlug(slug: string) {
+export async function getNewsBySlug(slug: string) {
   const { data, error } = await supabase
-    .from('blogs')
+    .from('news')
     .select('*')
     .eq('slug', slug)
     .eq('is_published', true)
     .single();
   if (error) throw error;
-  return data as Blog;
+  return data as NewsItem;
 }
 
-export async function getRecentBlogs(limit = 4) {
-  const { data } = await supabase
-    .from('blogs')
-    .select('id, title, slug, cover_image, published_at')
+export async function getBreakingNews(limit = 5) {
+  const { data, error } = await supabase
+    .from('news')
+    .select('id, title, slug')
     .eq('is_published', true)
+    .eq('is_breaking', true)
     .order('published_at', { ascending: false })
     .limit(limit);
-  return (data ?? []) as Blog[];
+  if (error) throw error;
+  return (data ?? []) as Pick<NewsItem, 'id' | 'title' | 'slug'>[];
 }
 
 // ---- ADMIN ----
-export async function getAllBlogsAdmin() {
+export async function getAllNewsAdmin() {
   const { data, error } = await supabase
-    .from('blogs')
+    .from('news')
     .select('*')
     .order('created_at', { ascending: false });
   if (error) throw error;
-  return data as Blog[];
+  return data as NewsItem[];
 }
 
-export async function getBlogById(id: string) {
+export async function getNewsById(id: string) {
   const { data, error } = await supabase
-    .from('blogs')
+    .from('news')
     .select('*')
     .eq('id', id)
     .single();
   if (error) throw error;
-  return data as Blog;
+  return data as NewsItem;
 }
 
 function generateSlug(title: string) {
@@ -84,57 +87,50 @@ function generateSlug(title: string) {
     .replace(/-+/g, '-');
 }
 
-// ---- IMAGE UPLOAD ----
-export async function uploadBlogImage(file: File): Promise<string> {
+export async function uploadNewsImage(file: File): Promise<string> {
   const fileExt = file.name.split('.').pop();
   const fileName = `${Date.now()}-${Math.random().toString(36).substring(2)}.${fileExt}`;
-  const filePath = `blog-images/${fileName}`;
+  const filePath = `news/${fileName}`;
 
-  const { error: uploadError } = await supabase.storage
-    .from('blog-images')
-    .upload(filePath, file);
+  const { error } = await supabase.storage.from('news-images').upload(filePath, file);
+  if (error) throw error;
 
-  if (uploadError) throw uploadError;
-
-  const { data: urlData } = supabase.storage
-    .from('blog-images')
-    .getPublicUrl(filePath);
-
-  return urlData.publicUrl;
+  const { data } = supabase.storage.from('news-images').getPublicUrl(filePath);
+  return data.publicUrl;
 }
 
-// ---- CRUD ----
-export async function createBlog(payload: {
+export async function createNews(payload: {
   title: string;
-  excerpt: string;
+  summary: string;
   content: string;
   cover_image: string;
   category: string;
-  author: string;
+  source: string;
+  is_breaking: boolean;
   is_published: boolean;
 }) {
   const slug = generateSlug(payload.title) + '-' + Date.now().toString().slice(-6);
   const { data, error } = await supabase
-    .from('blogs')
+    .from('news')
     .insert([{ ...payload, slug }])
     .select()
     .single();
   if (error) throw error;
-  return data as Blog;
+  return data as NewsItem;
 }
 
-export async function updateBlog(id: string, payload: Partial<Blog>) {
+export async function updateNews(id: string, payload: Partial<NewsItem>) {
   const { data, error } = await supabase
-    .from('blogs')
-    .update({ ...payload, updated_at: new Date().toISOString() })
+    .from('news')
+    .update(payload)
     .eq('id', id)
     .select()
     .single();
   if (error) throw error;
-  return data as Blog;
+  return data as NewsItem;
 }
 
-export async function deleteBlog(id: string) {
-  const { error } = await supabase.from('blogs').delete().eq('id', id);
+export async function deleteNews(id: string) {
+  const { error } = await supabase.from('news').delete().eq('id', id);
   if (error) throw error;
 }

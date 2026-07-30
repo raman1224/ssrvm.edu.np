@@ -2,21 +2,17 @@
 
 import dynamic from 'next/dynamic';
 import { Loader2 } from 'lucide-react';
+import { Notice } from '@/lib/supabase/notices';
 
-const BlogForm = dynamic(() => import('@/components/admin/BlogForm'), {
+const NoticeForm = dynamic(() => import('./NoticeForm'), {
   loading: () => (
     <div className="flex items-center justify-center h-64 bg-white rounded-xl shadow-sm">
       <Loader2 className="animate-spin text-[#183a6e]" size={32} />
     </div>
   ),
-  ssr: false, 
+  ssr: false,
 });
 
-export default function CreateBlogPage() {
-  return (
-    <div>
-      <h2 className="text-xl font-semibold mb-6">Create New Blog</h2>
-      <BlogForm />
-    </div>
-  );
+export default function EditNoticeClient({ initialData }: { initialData: Notice }) {
+  return <NoticeForm initialData={initialData} />;
 }

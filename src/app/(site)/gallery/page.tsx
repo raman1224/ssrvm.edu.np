@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import { PageHeader } from '@/components/ui/PageHeader';
+import { Gallery } from '@/components/gallery/page';
 
 export const metadata: Metadata = {
   title: 'Gallery | Sri Sri Ravishankar Vidya Mandir, Biratnagar, Nepal',
@@ -36,7 +37,7 @@ export default function GalleryPage() {
       {/* About Content */}
       <section className="py-10 md:py-16 lg:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        Under Construction
+        <Gallery />
         </div>
       </section>
     </>
