@@ -1,8 +1,18 @@
 import { getAllBlogsAdmin } from '@/lib/supabase/blog';
+import { getAllDocumentsAdmin } from '@/lib/supabase/documents';
+import { getAllEventsAdmin } from '@/lib/supabase/events';
+import { getAllGalleryAdmin } from '@/lib/supabase/gallery';
+import { getAllNewsAdmin } from '@/lib/supabase/news';
+import { getAllNoticesAdmin } from '@/lib/supabase/notices';
 import { FileText,  Calendar, Eye } from 'lucide-react';
 
 export default async function AdminDashboardPage() {
   const blogs = await getAllBlogsAdmin();
+  const events = await getAllEventsAdmin();
+  const gallery = await getAllGalleryAdmin();
+  const notices = await getAllNoticesAdmin();
+  const news = await getAllNewsAdmin();
+  const downloads = await getAllDocumentsAdmin();
   const published = blogs.filter(b => b.is_published).length;
   const drafts = blogs.filter(b => !b.is_published).length;
 
@@ -15,6 +25,57 @@ export default async function AdminDashboardPage() {
             <div>
               <p className="text-gray-500 text-sm">Total Blogs</p>
               <p className="text-2xl font-bold mt-1">{blogs.length}</p>
+            </div>
+            <FileText className="w-8 h-8 text-[#183a6e] opacity-50" />
+          </div>
+        </div>
+
+ <div className="bg-white p-6 rounded-xl shadow-sm border-l-4 border-[#2b8d92]">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-gray-500 text-sm">Total Gallery</p>
+              <p className="text-2xl font-bold mt-1">{gallery.length}</p>
+            </div>
+            <FileText className="w-8 h-8 text-[#183a6e] opacity-50" />
+          </div>
+        </div>
+
+         <div className="bg-white p-6 rounded-xl shadow-sm border-l-4 border-[#30bc3e]">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-gray-500 text-sm">Total Events</p>
+              <p className="text-2xl font-bold mt-1">{events.length}</p>
+            </div>
+            <FileText className="w-8 h-8 text-[#183a6e] opacity-50" />
+          </div>
+        </div>
+
+  <div className="bg-white p-6 rounded-xl shadow-sm border-l-4 border-[#962bb7]">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-gray-500 text-sm">Total Notices</p>
+              <p className="text-2xl font-bold mt-1">{notices.length}</p>
+            </div>
+            <FileText className="w-8 h-8 text-[#183a6e] opacity-50" />
+          </div>
+        </div>
+
+  <div className="bg-white p-6 rounded-xl shadow-sm border-l-4 border-[#818626]">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-gray-500 text-sm">Total News</p>
+              <p className="text-2xl font-bold mt-1">{news.length}</p>
+            </div>
+            <FileText className="w-8 h-8 text-[#183a6e] opacity-50" />
+          </div>
+        </div>
+
+
+  <div className="bg-white p-6 rounded-xl shadow-sm border-l-4 border-[#4d2285]">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-gray-500 text-sm">Total Downloads</p>
+              <p className="text-2xl font-bold mt-1">{downloads.length}</p>
             </div>
             <FileText className="w-8 h-8 text-[#183a6e] opacity-50" />
           </div>

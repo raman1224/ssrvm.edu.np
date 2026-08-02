@@ -40,6 +40,9 @@ export default function BlogTable() {
         <thead className="bg-gray-50 text-left text-gray-500">
           <tr>
             <th className="px-4 py-3">Title</th>
+                        <th className="px-4 py-3">Excerpt</th>
+
+             
             <th className="px-4 py-3">Category</th>
             <th className="px-4 py-3">Status</th>
             <th className="px-4 py-3">Date</th>
@@ -50,6 +53,7 @@ export default function BlogTable() {
           {blogs.map((blog) => (
             <tr key={blog.id} className="border-t">
               <td className="px-4 py-3 font-medium">{blog.title}</td>
+                            <td className="px-4 py-3">{blog.excerpt}</td>
               <td className="px-4 py-3">{blog.category}</td>
               <td className="px-4 py-3">
                 <span

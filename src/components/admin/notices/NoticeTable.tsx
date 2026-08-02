@@ -40,6 +40,7 @@ export default function NoticeTable() {
         <thead className="bg-gray-50 text-left text-gray-500">
           <tr>
             <th className="px-4 py-3">Title</th>
+                        <th className="px-4 py-3">Description</th>
             <th className="px-4 py-3">Status</th>
             <th className="px-4 py-3">Expiry</th>
             <th className="px-4 py-3">Date</th>
@@ -53,6 +54,7 @@ export default function NoticeTable() {
                 {n.is_pinned && <Pin size={13} className="text-[#f0aa00]" />}
                 {n.title}
               </td>
+              <td className='px-4 py-3'>{n.description}</td>
               <td className="px-4 py-3">
                 <span
                   className={`px-2 py-1 rounded-full text-xs ${

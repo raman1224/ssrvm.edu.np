@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { LayoutDashboard, FileText, Image, Bell, Calendar } from 'lucide-react';
+import { LayoutDashboard, FileText, Image, Bell, Calendar, Newspaper, Download } from 'lucide-react';
 
 const menuItems = [
   { label: 'Dashboard', href: '/admin/dashboard', icon: LayoutDashboard },
@@ -10,6 +10,9 @@ const menuItems = [
   { label: 'Gallery', href: '/admin/gallery', icon: Image },
   { label: 'Events', href: '/admin/events', icon: Calendar },
   { label: 'Notices', href: '/admin/notices', icon: Bell },
+    { label: 'News', href: '/admin/news', icon: Newspaper },
+  { label: 'Downloads', href: '/admin/documents', icon: Download },
+
 ];
 
 export default function AdminSidebar() {

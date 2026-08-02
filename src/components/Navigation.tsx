@@ -26,40 +26,18 @@ const navItems: NavItem[] = [
       { label: 'SSRVM Philosophy', path: '/philosophy' },
     ],
   },
-  // {
-  //   label: 'Academics',
-  //   subItems: [
-  //     { label: 'Career Counselling', path: '/' },
-  //     { label: 'School Calendar', path: '/' },
-  //     { label: 'Holiday Homework', path: '/' },
-  //     { label: 'School Syllabus', path: '/' },
-  //     { label: 'Exam Routines', path: '/' },
-  //     { label: 'Academic Circulars', path: '/' },
-  //   ],
-  // },
-  // {
-  //   label: 'Activities',
-  //   subItems: [
-  //     { label: 'Indoor Sports', path: '/activities' },
-  //     { label: 'Outdoor Sports', path: '/activities' },
-  //     { label: 'Dance & Music', path: '/activities' },
-  //     { label: 'Art', path: '/activities' },
-  //     { label: 'Community Service', path: '/activities' },
-  //     { label: 'Educational Trips', path: '/activities' },
-  //   ],
-  // },
+  
   { label: 'Facilities', path: '/facilities' },
   { label: 'Student Life', path: '/student-life' },
   { label: 'Gallery', path: '/gallery' },
   {
     label: 'Admission', path: '/admission'
-    // subItems: [
-    //   { label: 'Admission Form', path: '/admission' },
-    //   { label: 'Admission Procedure', path: '/admission' },
-    // ],
   },
       { label: 'Notices', path: '/notices' },
       { label: 'Events', path: '/events' },
+      { label: 'News', path: '/news' },
+            { label: 'Downloads', path: '/downloads' },
+
 
   {
     label: 'Awards',
@@ -70,8 +48,6 @@ const navItems: NavItem[] = [
     ],
   },
   { label: 'Blog', path: '/blog' },
-  // { label: 'Association', path: '/association' },
-  // { label: 'Soft Copies', path: '/soft-copies' },
   { label: 'Career', path: '/career' },
   { label: 'Contact Us', path: '/contact' },
 ];

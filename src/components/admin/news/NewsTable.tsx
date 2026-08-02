@@ -32,13 +32,11 @@ export default function NewsTable() {
     }
   }, [loadNews]);
 
-  // useMemo: category list हरेक render मा नयाँ नबनोस्, news array बदलिएमा मात्र recompute होस्
   const categories = useMemo(() => {
     const unique = new Set(news.map((n) => n.category));
     return ['All', ...Array.from(unique)];
   }, [news]);
 
-  // useMemo: filtered list - filterCategory वा news बदलिएमा मात्र फेरि compute होस्
   const filteredNews = useMemo(() => {
     if (filterCategory === 'All') return news;
     return news.filter((n) => n.category === filterCategory);
@@ -68,6 +66,7 @@ export default function NewsTable() {
           <thead className="bg-gray-50 text-left text-gray-500">
             <tr>
               <th className="px-4 py-3">Title</th>
+                            <th className="px-4 py-3">Summary</th>
               <th className="px-4 py-3">Category</th>
               <th className="px-4 py-3">Status</th>
               <th className="px-4 py-3">Date</th>
@@ -81,6 +80,7 @@ export default function NewsTable() {
                   {n.is_breaking && <Zap size={13} className="text-red-500 fill-red-500" />}
                   {n.title}
                 </td>
+                                <td className="px-4 py-3">{n.summary}</td>
                 <td className="px-4 py-3">{n.category}</td>
                 <td className="px-4 py-3">
                   <span
