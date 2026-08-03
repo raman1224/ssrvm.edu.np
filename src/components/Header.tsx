@@ -2,10 +2,10 @@
 
 import { memo } from 'react';
 import Link from 'next/link';
+import dynamic from "next/dynamic";
 import { GraduationCap } from 'lucide-react';
 import OptimizedImage from '@/components/ui/OptimizedImage';
-import NoticeBell from '@/components/NoticeBell';
-
+const NoticeBell = dynamic(() => import("@/components/NoticeBell"));
 export const Header = memo(function Header() {
   return (
     <div className="bg-white shadow-sm py-2 md:py-3 lg:py-4">

@@ -1,87 +1,131 @@
-import { HeroSlider } from '@/components/home/HeroSlider';
-import { WelcomeSection } from '@/components/home/WelcomeSection';
-import { VisionAchievements } from '@/components/home/VisionAchievements';
-import { GuruSection } from '@/components/home/GuruSection';
-import { PrincipalMessage } from '@/components/home/PrincipalMessage';
-import { WhyChooseUs } from '@/components/home/WhyChooseUs';
-import { PhotoGallery } from '@/components/home/PhotoGallery';
-import { LocationSection } from '@/components/home/LocationSection';
-import { Metadata } from 'next';
+import { Suspense } from "react";
+import dynamic from "next/dynamic";
+import { HeroSlider } from "@/components/home/HeroSlider";
+import { Metadata } from "next";
 
-export const dynamic = 'force-static';
+// export const dynamic = "force-static";
 export const revalidate = 3600;
 
+// ---------------- Dynamic Imports ----------------
+
+const WelcomeSection = dynamic(() =>
+  import("@/components/home/WelcomeSection").then((m) => ({
+    default: m.WelcomeSection,
+  }))
+);
+
+const VisionAchievements = dynamic(() =>
+  import("@/components/home/VisionAchievements").then((m) => ({
+    default: m.VisionAchievements,
+  }))
+);
+
+const GuruSection = dynamic(() =>
+  import("@/components/home/GuruSection").then((m) => ({
+    default: m.GuruSection,
+  }))
+);
+
+const PrincipalMessage = dynamic(() =>
+  import("@/components/home/PrincipalMessage").then((m) => ({
+    default: m.PrincipalMessage,
+  }))
+);
+
+const WhyChooseUs = dynamic(() =>
+  import("@/components/home/WhyChooseUs").then((m) => ({
+    default: m.WhyChooseUs,
+  }))
+);
+
+const PhotoGallery = dynamic(() =>
+  import("@/components/home/PhotoGallery").then((m) => ({
+    default: m.PhotoGallery,
+  }))
+);
+
+const LocationSection = dynamic(() =>
+  import("@/components/home/LocationSection").then((m) => ({
+    default: m.LocationSection,
+  }))
+);
+
+// ---------------- Skeleton ----------------
+
+function SectionSkeleton({ height = "h-80" }: { height?: string }) {
+  return (
+    <div className={`${height} w-full animate-pulse rounded-lg bg-gray-200`} />
+  );
+}
+
 export const metadata: Metadata = {
-  title: 'Home | Sri Sri Ravishankar Vidya Mandir, Biratnagar, Nepal',
-  description: 'Sri Sri Ravishankar Vidya Mandir, a revered temple of knowledge where every child\'s potential is nurtured. Established in 2064 B.S.',
-  keywords: 'SSRVM, Sri Sri Ravishankar Vidya Mandir, School in Biratnagar, Education Nepal, Best School in Nepal',
-  openGraph: {
-    title: 'Home | Sri Sri Ravishankar Vidya Mandir',
-    description: 'A revered temple of knowledge where every child\'s potential is nurtured.',
-    url: 'https://ssrvm.edu.np',
-    images: [
-      {
-        url: '/images/og-home.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Sri Sri Ravishankar Vidya Mandir',
-      },
-    ],
-  },
+  title: "Home | Sri Sri Ravishankar Vidya Mandir, Biratnagar, Nepal",
+  description:
+    "Sri Sri Ravishankar Vidya Mandir, a revered temple of knowledge where every child's potential is nurtured.",
 };
 
 export default function HomePage() {
   return (
     <>
+      {/* Above the fold */}
       <HeroSlider />
-      
-      {/* Welcome Section */}
+
       <section className="bg-[#feb505] py-8 md:py-12 lg:py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <WelcomeSection />
+        <div className="max-w-7xl mx-auto px-4">
+          <Suspense fallback={<SectionSkeleton />}>
+            <WelcomeSection />
+          </Suspense>
         </div>
       </section>
 
-      {/* Vision, Achievements & Important Notice */}
-      <section className="py-8 md:py-12 lg:py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <VisionAchievements />
+      <section className="bg-gray-50 py-8 md:py-12 lg:py-16">
+        <div className="max-w-7xl mx-auto px-4">
+          <Suspense fallback={<SectionSkeleton />}>
+            <VisionAchievements />
+          </Suspense>
         </div>
       </section>
 
-      {/* Guru Section */}
-      <section className="bg-[#feaa02] py-8 md:py-12 lg:py-16 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <GuruSection />
+      <section className="bg-[#feaa02] py-8 md:py-12 lg:py-16">
+        <div className="max-w-7xl mx-auto px-4">
+          <Suspense fallback={<SectionSkeleton />}>
+            <GuruSection />
+          </Suspense>
         </div>
       </section>
 
-      {/* Principal Message */}
       <section className="bg-[#ededec] py-8 md:py-12 lg:py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <PrincipalMessage />
+        <div className="max-w-7xl mx-auto px-4">
+          <Suspense fallback={<SectionSkeleton />}>
+            <PrincipalMessage />
+          </Suspense>
         </div>
       </section>
 
-      {/* Why Choose Us */}
-      <section className="py-8 md:py-12 lg:py-16 bg-cover bg-center bg-fixed relative" style={{ backgroundImage: 'url(/images/bg.webp)' }}>
-        <div className="absolute inset-0 bg-[#1a1a2e]/80"></div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <WhyChooseUs />
+      <section
+        className="bg-cover bg-center bg-fixed py-8 md:py-12 lg:py-16 relative"
+        style={{ backgroundImage: "url(/images/bg.webp)" }}
+      >
+        <div className="absolute inset-0 bg-[#1a1a2e]/80" />
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4">
+          <Suspense fallback={<SectionSkeleton />}>
+            <WhyChooseUs />
+          </Suspense>
         </div>
       </section>
 
-      {/* Photo Gallery */}
-      <section className="py-8 md:py-12 lg:py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <PhotoGallery />
+      <section className="bg-gray-50 py-8 md:py-12 lg:py-16">
+        <div className="max-w-7xl mx-auto px-4">
+          <Suspense fallback={<SectionSkeleton />}>
+            <PhotoGallery />
+          </Suspense>
         </div>
       </section>
 
-     
-
-      {/* Location / Map Section */}
-      <LocationSection />
+      <Suspense fallback={<SectionSkeleton height="h-96" />}>
+        <LocationSection />
+      </Suspense>
     </>
   );
 }
